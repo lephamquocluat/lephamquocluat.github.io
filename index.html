@@ -5,216 +5,313 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Hướng dẫn sử dụng máy tự động thu sách cũ">
 <title>Hướng dẫn sử dụng máy tự động thu sách cũ</title>
+
 <style>
-  :root {
-    --bg: #f5f7fb;
-    --card: #ffffff;
-    --text: #1f2937;
-    --muted: #667085;
-    --accent: #2563eb;
-    --accent-soft: #eaf1ff;
-    --border: #e5e7eb;
-    --warning: #fff7ed;
-    --warning-border: #fb923c;
-    --shadow: 0 8px 28px rgba(15, 23, 42, .07);
-  }
+    * {
+        box-sizing: border-box;
+    }
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+    body {
+        margin: 0;
+        background: #f5f5f5;
+        color: #222;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+    }
 
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    line-height: 1.7;
-    font-size: 16px;
-  }
+    .document {
+        width: min(850px, calc(100% - 28px));
+        margin: 25px auto;
+        padding: 35px 42px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
 
-  .container {
-    width: min(920px, calc(100% - 28px));
-    margin: 0 auto;
-  }
+    h1 {
+        margin: 0 0 28px;
+        text-align: center;
+        font-size: 30px;
+        line-height: 1.3;
+    }
 
-  header {
-    padding: 44px 0 28px;
-  }
+    h2 {
+        margin: 35px 0 14px;
+        font-size: 23px;
+        line-height: 1.4;
+    }
 
-  .hero {
-    background: linear-gradient(135deg, #ffffff, #eef4ff);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 30px 28px;
-    box-shadow: var(--shadow);
-  }
+    h3 {
+        margin: 24px 0 8px;
+        font-size: 19px;
+        line-height: 1.45;
+    }
 
-  .label {
-    display: inline-block;
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-size: 13px;
-    font-weight: 700;
-  }
+    p {
+        margin: 9px 0;
+        text-align: justify;
+    }
 
-  h1 {
-    margin: 0;
-    font-size: clamp(27px, 5vw, 42px);
-    line-height: 1.18;
-    letter-spacing: -.5px;
-  }
+    ul {
+        margin: 8px 0 18px;
+        padding-left: 28px;
+    }
 
-  .intro {
-    margin: 14px 0 0;
-    color: var(--muted);
-  }
+    li {
+        margin: 5px 0;
+    }
 
-  .toc {
-    display: grid;
-    gap: 8px;
-    margin: 22px 0;
-  }
+    .message {
+        margin: 10px 0;
+        text-align: center;
+        font-weight: bold;
+    }
 
-  .toc a {
-    display: block;
-    padding: 11px 14px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
-  }
+    .or {
+        text-align: center;
+        font-style: italic;
+    }
 
-  .toc a:hover {
-    border-color: #b7c7ee;
-    background: var(--accent-soft);
-  }
+    .important {
+        margin-top: 28px;
+        padding: 15px 18px;
+        border-left: 4px solid #888;
+        background: #f7f7f7;
+    }
 
-  main {
-    padding-bottom: 45px;
-  }
+    @media (max-width: 600px) {
+        body {
+            font-size: 16px;
+        }
 
-  section, h2 {
-    scroll-margin-top: 20px;
-  }
+        .document {
+            width: calc(100% - 16px);
+            margin: 8px auto;
+            padding: 22px 18px;
+            border-radius: 5px;
+        }
 
-  h2 {
-    margin: 38px 0 16px;
-    padding: 13px 16px;
-    border-left: 5px solid var(--accent);
-    background: var(--accent-soft);
-    border-radius: 0 12px 12px 0;
-    font-size: clamp(21px, 4vw, 27px);
-    line-height: 1.3;
-  }
+        h1 {
+            font-size: 25px;
+        }
 
-  h3 {
-    margin: 28px 0 8px;
-    font-size: 19px;
-    line-height: 1.4;
-  }
+        h2 {
+            font-size: 21px;
+        }
 
-  h3.case {
-    margin-top: 24px;
-  }
-
-  p {
-    margin: 9px 0;
-  }
-
-  ul {
-    margin: 8px 0 18px;
-    padding-left: 24px;
-  }
-
-  li {
-    margin: 6px 0;
-  }
-
-  .screen-message {
-    margin: 12px 0;
-    padding: 13px 16px;
-    border: 1px dashed #a8b8d8;
-    background: #f8fbff;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: 700;
-  }
-
-  .or {
-    text-align: center;
-    color: var(--muted);
-    font-style: italic;
-    margin: 3px 0;
-  }
-
-  .important {
-    margin-top: 26px;
-    padding: 16px 18px;
-    background: var(--warning);
-    border-left: 5px solid var(--warning-border);
-    border-radius: 12px;
-  }
-
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 22px 0 35px;
-    color: var(--muted);
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .top {
-    display: inline-block;
-    margin-top: 16px;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  @media (max-width: 600px) {
-    body { font-size: 15.5px; }
-    .container { width: min(100% - 20px, 920px); }
-    header { padding-top: 20px; }
-    .hero { padding: 23px 18px; border-radius: 17px; }
-    h2 { margin-top: 30px; }
-    .toc a { padding: 10px 12px; }
-  }
+        h3 {
+            font-size: 18px;
+        }
+    }
 </style>
 </head>
-<body id="top">
-  <header class="container">
-    <div class="hero">
-      <span class="label">HƯỚNG DẪN SỬ DỤNG</span>
-      <h1>Máy tự động thu sách cũ</h1>
-      <p class="intro">Hướng dẫn từng bước để người dùng thực hiện giao dịch an toàn và đúng quy trình.</p>
-    </div>
-    
-<nav class="toc" aria-label="Mục lục">
-  <a href="#section-1">1. Giới thiệu</a>
-  <a href="#section-2">2. Điều kiện trước khi sử dụng</a>
-  <a href="#section-3">3. Hướng dẫn chi tiết</a>
-  <a href="#section-4">4. Xử lý trường hợp máy báo lỗi</a>
-  <a href="#section-5">5. Những lưu ý quan trọng</a>
-</nav>
 
-  </header>
+<body>
+<main class="document">
 
-  <main class="container">
-    <p>HƯỚNG DẪN SỬ DỤNG MÁY TỰ ĐỘNG THU SÁCH CŨ</p><p>Giới thiệu</p><p>Máy tự động thu sách cũ là trạm thu nhận sách cũ được thiết kế nhằm khuyến khích mọi người quyên góp những cuốn sách không còn sử dụng và đưa chúng đến những người có nhu cầu. Hệ thống kết hợp giữa cơ cấu nhận và lưu trữ sách, giao diện hướng dẫn người dùng, hệ thống xác nhận và cơ chế trao phần thưởng.</p><p>Người dùng có thể thực hiện quy trình tương đối đơn giản: kiểm tra sách → đưa sách vào máy → xác nhận → nhận phần thưởng. Sau khi tiếp nhận, sách được lưu trữ và có thể được thu gom để phân loại, tái sử dụng hoặc trao tặng cho các đối tượng cần hỗ trợ.</p><p>Mục tiêu của máy không chỉ là thu gom sách mà còn tạo ra một hình thức đóng góp thuận tiện, minh bạch và có tính khuyến khích, qua đó góp phần giảm lãng phí tài nguyên và hỗ trợ hoạt động chia sẻ sách trong cộng đồng.</p><p>Điều kiện trước khi sử dụng</p><p>Trước khi sử dụng máy, người dùng cần kiểm tra:</p><p>Máy đang hoạt động và màn hình hiển thị trạng thái sẵn sàng.</p><p>Khe nhận sách không bị kẹt hoặc có vật cản.</p><p>Sách mang đến đáp ứng các tiêu chí tiếp nhận của hệ thống.</p><p>Người dùng không cố gắng mở các cửa hoặc khoang được khóa.</p><p>Thực hiện đúng các hướng dẫn hiển thị trên màn hình.</p><p>Hướng dẫn chi tiết</p><h3>Bước 1: Kiểm tra sách</h3><p>Trước khi đưa sách vào máy, người dùng kiểm tra tình trạng của sách.</p><p>Nên ưu tiên những cuốn sách:</p><p>Còn tương đối nguyên vẹn.</p><p>Có thể sử dụng hoặc đọc được.</p><p>Không bị ướt hoặc hư hỏng nghiêm trọng.</p><p>Không có vật nguy hiểm bên trong.</p><p>Phù hợp với tiêu chí tiếp nhận do đơn vị quản lý quy định.</p><p>Không nên đưa vào máy những vật không phải sách, sách bị hư hỏng nghiêm trọng hoặc những vật có thể gây kẹt cơ cấu nhận.</p><h3>Bước 2: Bắt đầu giao dịch</h3><p>Người dùng chạm vào nút “ENTER” trên màn hình để kích hoạt máy</p><h3>Bước 3: Đưa sách vào máy</h3><p>Người dùng đặt sách vào đúng vị trí được đánh dấu tại khe nhận sách.</p><p>Không nên đẩy sách quá mạnh hoặc đưa nhiều sách cùng lúc nếu máy chỉ được thiết kế để nhận từng cuốn.</p><p>Sau khi sách được đặt đúng vị trí, cảm biến hoặc cơ cấu nhận sách sẽ xác định trạng thái và chuyển sách vào khoang chứa.</p><p>Trong thời gian máy đang xử lý, người dùng không được đưa tay vào khe nhận sách.</p><h3>Bước 4: Máy kiểm tra và xác nhận</h3><p>Sau khi nhận sách, hệ thống tiến hành kiểm tra theo chức năng được thiết kế.</p><p>Màn hình sẽ hiển thị kết quả.</p><p>Nếu sách đạt yêu cầu, hệ thống chuyển sang bước trao phần thưởng.</p><p>Nếu sách không đạt yêu cầu hoặc xảy ra lỗi, màn hình sẽ hiển thị thông báo để người dùng thực hiện lại hoặc lấy sách ra theo hướng dẫn.</p><h3>Bước 5: Nhận phần thưởng</h3><p>Sau khi giao dịch được xác nhận thành công, máy sẽ thông báo số phần thưởng mà người dùng được nhận theo quy định của hệ thống.</p><p>Sau khi nhận phần thưởng, người dùng kiểm tra lại để bảo đảm giao dịch đã hoàn tất.</p><h2 id="section-7">7. Kết thúc giao dịch</h2><p>Sau khi hoàn tất, màn hình có thể hiển thị:</p><div class="screen-message">“Đóng góp thành công!”</div><div class="or">hoặc</div><div class="screen-message">“Cảm ơn bạn đã góp sách cho cộng đồng.”</div><p>Người dùng lấy phần thưởng và rời khỏi khu vực máy, đảm bảo không để lại vật dụng tại khe nhận sách.</p><p>Nếu muốn thực hiện một giao dịch mới, người dùng có thể chọn “Giao dịch mới”.</p><p>Xử lý trường hợp máy báo lỗi</p><p>Trong quá trình sử dụng, người dùng có thể gặp một số thông báo.</p><h3 class="case">Trường hợp 1: Khe nhận sách bị kẹt</h3><p>Không dùng tay hoặc vật cứng để cố lấy sách ra.</p><p>Người dùng nên chờ thông báo trên màn hình hoặc liên hệ người phụ trách.</p><h3 class="case">Trường hợp 2: Máy không nhận sách</h3><p>Kiểm tra xem sách đã được đặt đúng vị trí hay chưa.</p><p>Nếu máy vẫn không nhận, lấy sách ra và thực hiện lại theo hướng dẫn.</p><h3 class="case">Trường hợp 3: Máy báo sách không hợp lệ</h3><p>Lấy sách ra và kiểm tra xem sách có đáp ứng tiêu chí tiếp nhận hay không.</p><h3 class="case">Trường hợp 4: Máy không phát phần thưởng</h3><p>Không tự ý mở khoang phần thưởng.</p><p>Người dùng cần giữ lại thông tin giao dịch hoặc thông báo trên màn hình và liên hệ người quản lý.</p><h3 class="case">Trường hợp 5: Màn hình không phản hồi</h3><p>Không cố gắng tháo màn hình hoặc mở thân máy.</p><p>Liên hệ người phụ trách kỹ thuật để kiểm tra.</p><h2 id="section-5">5. Những lưu ý quan trọng</h2><p>Để đảm bảo an toàn và duy trì hoạt động của máy, người dùng cần lưu ý:</p><p>Không đưa tay hoặc vật lạ vào bên trong khe nhận sách.</p><p>Không đập, rung, nghiêng hoặc tác động mạnh vào máy.</p><p>Không tự ý mở cửa bảo trì hoặc khoang chứa sách.</p><p>Không đưa nước hoặc chất lỏng vào máy.</p><p>Không đưa các vật không phù hợp vào khe nhận sách.</p><p>Không cố lấy phần thưởng bằng cách tác động vào cơ cấu phát thưởng.</p><p>Luôn thực hiện theo hướng dẫn trên màn hình.</p>
+    <h1>HƯỚNG DẪN SỬ DỤNG MÁY TỰ ĐỘNG THU SÁCH CŨ</h1>
+
+    <h2>1. Giới thiệu</h2>
+
+    <p>
+        Máy tự động thu sách cũ là trạm thu nhận sách cũ được thiết kế nhằm khuyến khích mọi người
+        quyên góp những cuốn sách không còn sử dụng và đưa chúng đến những người có nhu cầu.
+        Hệ thống kết hợp giữa cơ cấu nhận và lưu trữ sách, giao diện hướng dẫn người dùng,
+        hệ thống xác nhận và cơ chế trao phần thưởng.
+    </p>
+
+    <p>
+        Người dùng có thể thực hiện quy trình tương đối đơn giản:
+        kiểm tra sách → đưa sách vào máy → xác nhận → nhận phần thưởng.
+        Sau khi tiếp nhận, sách được lưu trữ và có thể được thu gom để phân loại,
+        tái sử dụng hoặc trao tặng cho các đối tượng cần hỗ trợ.
+    </p>
+
+    <p>
+        Mục tiêu của máy không chỉ là thu gom sách mà còn tạo ra một hình thức đóng góp thuận tiện,
+        minh bạch và có tính khuyến khích, qua đó góp phần giảm lãng phí tài nguyên và hỗ trợ
+        hoạt động chia sẻ sách trong cộng đồng.
+    </p>
+
+    <h2>2. Điều kiện trước khi sử dụng</h2>
+
+    <p>Trước khi sử dụng máy, người dùng cần kiểm tra:</p>
+
+    <ul>
+        <li>Máy đang hoạt động và màn hình hiển thị trạng thái sẵn sàng.</li>
+        <li>Khe nhận sách không bị kẹt hoặc có vật cản.</li>
+        <li>Sách mang đến đáp ứng các tiêu chí tiếp nhận của hệ thống.</li>
+        <li>Người dùng không cố gắng mở các cửa hoặc khoang được khóa.</li>
+        <li>Thực hiện đúng các hướng dẫn hiển thị trên màn hình.</li>
+    </ul>
+
+    <h2>3. Hướng dẫn chi tiết</h2>
+
+    <h3>Bước 1: Kiểm tra sách</h3>
+
+    <p>Trước khi đưa sách vào máy, người dùng kiểm tra tình trạng của sách.</p>
+
+    <p>Nên ưu tiên những cuốn sách:</p>
+
+    <ul>
+        <li>Còn tương đối nguyên vẹn.</li>
+        <li>Có thể sử dụng hoặc đọc được.</li>
+        <li>Không bị ướt hoặc hư hỏng nghiêm trọng.</li>
+        <li>Không có vật nguy hiểm bên trong.</li>
+        <li>Phù hợp với tiêu chí tiếp nhận do đơn vị quản lý quy định.</li>
+    </ul>
+
+    <p>
+        Không nên đưa vào máy những vật không phải sách, sách bị hư hỏng nghiêm trọng
+        hoặc những vật có thể gây kẹt cơ cấu nhận.
+    </p>
+
+    <h3>Bước 2: Bắt đầu giao dịch</h3>
+
+    <p>
+        Người dùng chạm vào nút “ENTER” trên màn hình để kích hoạt máy.
+    </p>
+
+    <h3>Bước 3: Đưa sách vào máy</h3>
+
+    <p>
+        Người dùng đặt sách vào đúng vị trí được đánh dấu tại khe nhận sách.
+    </p>
+
+    <p>
+        Không nên đẩy sách quá mạnh hoặc đưa nhiều sách cùng lúc nếu máy chỉ được thiết kế
+        để nhận từng cuốn.
+    </p>
+
+    <p>
+        Sau khi sách được đặt đúng vị trí, cảm biến hoặc cơ cấu nhận sách sẽ xác định trạng thái
+        và chuyển sách vào khoang chứa.
+    </p>
+
+    <p>
+        Trong thời gian máy đang xử lý, người dùng không được đưa tay vào khe nhận sách.
+    </p>
+
+    <h3>Bước 4: Máy kiểm tra và xác nhận</h3>
+
+    <p>
+        Sau khi nhận sách, hệ thống tiến hành kiểm tra theo chức năng được thiết kế.
+    </p>
+
+    <p>Màn hình sẽ hiển thị kết quả.</p>
+
+    <p>
+        Nếu sách đạt yêu cầu, hệ thống chuyển sang bước trao phần thưởng.
+    </p>
+
+    <p>
+        Nếu sách không đạt yêu cầu hoặc xảy ra lỗi, màn hình sẽ hiển thị thông báo
+        để người dùng thực hiện lại hoặc lấy sách ra theo hướng dẫn.
+    </p>
+
+    <h3>Bước 5: Nhận phần thưởng</h3>
+
+    <p>
+        Sau khi giao dịch được xác nhận thành công, máy sẽ thông báo số phần thưởng
+        mà người dùng được nhận theo quy định của hệ thống.
+    </p>
+
+    <p>
+        Sau khi nhận phần thưởng, người dùng kiểm tra lại để bảo đảm giao dịch đã hoàn tất.
+    </p>
+
+    <h3>7. Kết thúc giao dịch</h3>
+
+    <p> Sau khi hoàn tất, màn hình có thể hiển thị:</p>
+
+    <p class="message">“Đóng góp thành công!”</p>
+
+    <p class="or">hoặc</p>
+
+    <p class="message">“Cảm ơn bạn đã góp sách cho cộng đồng.”</p>
+
+    <p>
+        Người dùng lấy phần thưởng và rời khỏi khu vực máy, đảm bảo không để lại vật dụng
+        tại khe nhận sách.
+    </p>
+
+    <p>
+        Nếu muốn thực hiện một giao dịch mới, người dùng có thể chọn “Giao dịch mới”.
+    </p>
+
+    <h2>4. Xử lý trường hợp máy báo lỗi</h2>
+
+    <p>
+        Trong quá trình sử dụng, người dùng có thể gặp một số thông báo.
+    </p>
+
+    <h3>Trường hợp 1: Khe nhận sách bị kẹt</h3>
+
+    <p>
+        Không dùng tay hoặc vật cứng để cố lấy sách ra.
+    </p>
+
+    <p>
+        Người dùng nên chờ thông báo trên màn hình hoặc liên hệ người phụ trách.
+    </p>
+
+    <h3>Trường hợp 2: Máy không nhận sách</h3>
+
+    <p>
+        Kiểm tra xem sách đã được đặt đúng vị trí hay chưa.
+    </p>
+
+    <p>
+        Nếu máy vẫn không nhận, lấy sách ra và thực hiện lại theo hướng dẫn.
+    </p>
+
+    <h3>Trường hợp 3: Máy báo sách không hợp lệ</h3>
+
+    <p>
+        Lấy sách ra và kiểm tra xem sách có đáp ứng tiêu chí tiếp nhận hay không.
+    </p>
+
+    <h3>Trường hợp 4: Máy không phát phần thưởng</h3>
+
+    <p>
+        Không tự ý mở khoang phần thưởng.
+    </p>
+
+    <p>
+        Người dùng cần giữ lại thông tin giao dịch hoặc thông báo trên màn hình
+        và liên hệ người quản lý.
+    </p>
+
+    <h3>Trường hợp 5: Màn hình không phản hồi</h3>
+
+    <p>
+        Không cố gắng tháo màn hình hoặc mở thân máy.
+    </p>
+
+    <p>
+        Liên hệ người phụ trách kỹ thuật để kiểm tra.
+    </p>
+
+    <h2>5. Những lưu ý quan trọng</h2>
+
+    <p>Để đảm bảo an toàn và duy trì hoạt động của máy, người dùng cần lưu ý:</p>
+
+    <ul>
+        <li>Không đưa tay hoặc vật lạ vào bên trong khe nhận sách.</li>
+        <li>Không đập, rung, nghiêng hoặc tác động mạnh vào máy.</li>
+        <li>Không tự ý mở cửa bảo trì hoặc khoang chứa sách.</li>
+        <li>Không đưa nước hoặc chất lỏng vào máy.</li>
+        <li>Không đưa các vật không phù hợp vào khe nhận sách.</li>
+        <li>Không cố lấy phần thưởng bằng cách tác động vào cơ cấu phát thưởng.</li>
+        <li>Luôn thực hiện theo hướng dẫn trên màn hình.</li>
+    </ul>
 
     <div class="important">
-      <strong>Lưu ý an toàn:</strong> Luôn thực hiện theo hướng dẫn trên màn hình và không tự ý mở hoặc tác động vào các bộ phận của máy.
+        <strong>Lưu ý:</strong> Luôn thực hiện đúng hướng dẫn trên màn hình và không tự ý
+        tác động vào các bộ phận của máy.
     </div>
 
-    <a class="top" href="#top">↑ Về đầu trang</a>
-  </main>
-
-  <footer>
-    Hướng dẫn sử dụng máy tự động thu sách cũ
-  </footer>
+</main>
 </body>
 </html>
